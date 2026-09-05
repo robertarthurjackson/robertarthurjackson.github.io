@@ -13,6 +13,7 @@
 <body class="home">
   <main class="home">
     <nav class="site top">
+      <a href="#" id="contact" data-u="hello" data-d="robroth.ca">Contact</a>
       <a href="resume/" class="primary">Resume</a>
     </nav>
 
@@ -75,5 +76,13 @@
       </div>
     </div>
   </main>
+  <script>
+    (function () {
+      var a = document.getElementById('contact');
+      var addr = a.dataset.u + '@' + a.dataset.d;
+      a.addEventListener('click', function (e) { e.preventDefault(); location.href = 'mailto:' + addr; });
+      a.title = addr;
+    })();
+  </script>
 </body>
 </html>
