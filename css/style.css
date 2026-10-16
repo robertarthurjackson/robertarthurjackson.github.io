@@ -118,6 +118,23 @@ a.card:hover { transform: translateY(-4px); box-shadow: var(--shadow); border-co
   font-family: system-ui, -apple-system, sans-serif; font-size: 0.66rem; text-transform: uppercase; letter-spacing: 0.08em;
   color: var(--accent); background: var(--tint); border-radius: 999px; padding: 0.2rem 0.55rem;
 }
+/* Per-card hue: set --h (and optionally --s) on a card for a soft tinted background. */
+.card[style*="--h"] {
+  --s: 55%;
+  background: hsl(var(--h) var(--s) 95%);
+  border-color: hsl(var(--h) calc(var(--s) * 0.6) 84%);
+}
+.card[style*="--h"] .icon, .card[style*="--h"] .badge { background: hsl(var(--h) var(--s) 90%); color: hsl(var(--h) var(--s) 34%); }
+a.card[style*="--h"]:hover { border-color: hsl(var(--h) var(--s) 50%); }
+.card[style*="--h"].elsewhere li a { background: hsl(var(--h) var(--s) 98.5%); border-color: hsl(var(--h) calc(var(--s) * 0.6) 84%); }
+.card[style*="--h"].elsewhere li a:hover { background: hsl(var(--h) var(--s) 92%); border-color: hsl(var(--h) var(--s) 50%); }
+@media (prefers-color-scheme: dark) {
+  .card[style*="--h"] { background: hsl(var(--h) calc(var(--s) * 0.35) 14%); border-color: hsl(var(--h) calc(var(--s) * 0.35) 22%); }
+  .card[style*="--h"] .icon, .card[style*="--h"] .badge { background: hsl(var(--h) calc(var(--s) * 0.5) 22%); color: hsl(var(--h) var(--s) 72%); }
+  a.card[style*="--h"]:hover { border-color: hsl(var(--h) var(--s) 55%); }
+  .card[style*="--h"].elsewhere li a { background: hsl(var(--h) calc(var(--s) * 0.35) 17%); border-color: hsl(var(--h) calc(var(--s) * 0.35) 28%); }
+  .card[style*="--h"].elsewhere li a:hover { background: hsl(var(--h) calc(var(--s) * 0.5) 22%); border-color: hsl(var(--h) var(--s) 55%); }
+}
 .card.elsewhere ul { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: 0.45rem; }
 .card.elsewhere li a {
   display: inline-block; font-family: system-ui, -apple-system, sans-serif; font-size: 0.85rem; text-decoration: none;
